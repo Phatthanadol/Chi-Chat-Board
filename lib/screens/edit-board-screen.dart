@@ -28,7 +28,7 @@ class _EditBoardPageState extends State<EditBoardPage> {
         .get()
         .then((DocumentSnapshot value) {
       Map<String, dynamic> data = value.data()! as Map<String, dynamic>;
-      _editboarddescribe = data["describe"];
+      _editboarddescribe.text = data["describe"];
     });
   }
 
@@ -36,7 +36,7 @@ class _EditBoardPageState extends State<EditBoardPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Edit Board'),
+        title: const Text('Edit Post'),
         backgroundColor: Color.fromARGB(255, 0, 0, 0),
       ),
       body: Form(

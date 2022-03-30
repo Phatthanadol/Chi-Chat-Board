@@ -13,21 +13,33 @@ class CreateBoardPage extends StatefulWidget {
 class _CreateBoardPageState extends State<CreateBoardPage> {
   CollectionReference posts = FirebaseFirestore.instance.collection('Posts');
   final _addFormKey = GlobalKey<FormState>();
-  final String _creator = '${FirebaseAuth.instance.currentUser!.displayName}';
   final String _email = '${FirebaseAuth.instance.currentUser!.email}';
   final TextEditingController _bdescribe = TextEditingController();
+  String? _creator;
   final Timestamp _timestamp = Timestamp.now();
   @override
   void initState() {
     super.initState();
+    if (FirebaseAuth.instance.currentUser!.displayName.toString().isNotEmpty) {
+      _creator = FirebaseAuth.instance.currentUser!.displayName;
+    } else {
+      FirebaseFirestore.instance
+          .collection('Users')
+          .doc('${FirebaseAuth.instance.currentUser!.uid}')
+          .get()
+          .then((DocumentSnapshot value) {
+        Map<String, dynamic> data = value.data()! as Map<String, dynamic>;
+        _creator = data["displayName"].toString();
+      });
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Create Forum'),
-        backgroundColor: Color.fromARGB(255, 1, 41, 151),
+        title: const Text('Create Post'),
+        backgroundColor: Color.fromARGB(255, 0, 0, 0),
       ),
       body: Form(
         key: _addFormKey,

@@ -72,12 +72,12 @@ class _HomepagePageState extends State<HomepagePage> {
 
         if (snapshot.hasData) {
           // Convert snapshot.data to jsonString
-          var products = snapshot.data;
-
+          var post = snapshot.data;
+          var user = FirebaseAuth.instance.currentUser!;
           // Define Widgets to myList
           myList = [
             Column(
-              children: products!.docs.map((DocumentSnapshot doc) {
+              children: post!.docs.map((DocumentSnapshot doc) {
                 Map<String, dynamic> data = doc.data()! as Map<String, dynamic>;
                 return Card(
                   child: Container(
@@ -99,19 +99,23 @@ class _HomepagePageState extends State<HomepagePage> {
                               ),
                             ),
                             Container(
-                              alignment: Alignment.centerRight,
-                              child: IconButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            EditBoardPage(id: doc.id),
-                                      )).then((value) => setState(() {}));
-                                },
-                                icon: Icon(Icons.edit),
+                              child: Text(
+                                '${DateTime.parse(data['timestamp'].toDate().toString())}',
                               ),
-                            )
+                            ),
+                            Container(
+                                alignment: Alignment.centerRight,
+                                child: IconButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              EditBoardPage(id: doc.id),
+                                        )).then((value) => setState(() {}));
+                                  },
+                                  icon: Icon(Icons.edit),
+                                )),
                           ],
                         ),
                         SizedBox(
