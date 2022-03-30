@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "34133582791",
+    "project_id": "pexel-world",
+    "storage_bucket": "pexel-world.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:34133582791:android:e6cd39537a89ac7c08efe2",
+        "android_client_info": {
+          "package_name": "com.example.td_games"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "34133582791-8o8cjl19mqbf31qfahr1kmfie1qa58v0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.td_games",
+            "certificate_hash": "1b77ed2a273e78cf65cdc876217355f788fad184"
+          }
+        },
+        {
+          "client_id": "34133582791-runb24r5c5lldba2hnpsudsb0a34stau.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADSZ42eHseg9MF7RqOh8cZevmEiDDY9iU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "34133582791-runb24r5c5lldba2hnpsudsb0a34stau.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
